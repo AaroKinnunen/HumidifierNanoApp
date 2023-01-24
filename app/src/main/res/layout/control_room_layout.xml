@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+    <data>
+        <variable
+            name="datas"
+            type="com.example.arduino_sense.AppData" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/Layout_margin1"
+        android:orientation="vertical"
+        android:padding="@dimen/layout_padding1">
+
+        <Button
+            android:id="@+id/backbtn"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/trans"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:stateListAnimator="@null"
+            app:icon="?attr/actionModeCloseDrawable"
+            app:iconTint="@color/purple_500"
+            tools:visibility="visible" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+
+
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <TextView
+                            android:id="@+id/text_humidity"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@{datas.temperature+' '+'°'+'C'}"
+                            android:textColor="@color/teal_700"
+                            android:textSize="96sp" />
+
+                        <TextView
+                            android:id="@+id/text_temperature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@{datas.humidity+' '+' '+'%'}"
+                            android:textColor="@color/teal_700"
+                            android:textSize="96sp" />
+
+
+                    </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linmid"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/linearLayout2">
+                            <ToggleButton
+                                android:id="@+id/auto_button"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:backgroundTint="@color/teal_700"
+                                android:buttonTint="@color/teal_200"
+                                android:text="@{datas.mode.btn_text}"
+                                android:textColor="@{datas.mode.btn_color}"
+                                android:textSize="36sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/setLimit" />
+
+                            <Switch
+                                android:id="@+id/switch_led"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="24dp"
+                                android:scrollbarSize="20dp"
+                                android:switchMinWidth="90dp"
+                                android:switchPadding="10dp"
+                                android:thumbTint="@color/teal_700"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/auto_button"
+                                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                            <TextView
+                                android:id="@+id/textView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text=""
+                                android:textColor="@{datas.ledMode.led_color}"
+                                android:textSize="30sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.501"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/switch_led" />
+                            <TextView
+                                android:id="@+id/curHum"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="Current level" />
+
+                        </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/lin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/linmid">
+
+                        <EditText
+                            android:id="@+id/setLimit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:hint="SetLevel"
+                            android:inputType="number"
+                            android:text=""
+                            android:textColor="@color/teal_700"
+                            android:textColorHint="@color/teal_200"
+                            android:textSize="20sp" />
+                        <Button
+                            android:id="@+id/setbutton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Set"
+                            android:layout_weight="1"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+</layout>
+
