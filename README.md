@@ -1,2 +1,1 @@
-# Arduino Sense
-# BLE added
+# App for Arduino Nano humidifier
